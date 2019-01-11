@@ -1,7 +1,6 @@
 // Declaring global variables
 const clock = document.getElementById("clock");
 
-
 //Setter klokkeslett
 
 function setTime() {
@@ -39,7 +38,7 @@ function setTime() {
     minuteWithLeadingZero() +
     ":" +
     secondWithLeadingZero();
-    clock.textContent = klokkeslett;
+  clock.textContent = klokkeslett;
 }
 
 // Starts clock on pageload
@@ -50,11 +49,51 @@ setInterval(setTime, 1000);
 
 // Adjusting style
 
-
 // Changing background constructor(props)
 
-function changeBackground(red) {
-    document.body.style.backgroundColor = "(red)";
+// Initial functions creating of random numbers from 0-255 for color scale
+function randomColorNumbers(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Creates random RGB-color starting point
+
+randomR = randomColorNumbers(0, 255);
+randomG = randomColorNumbers(0, 255);
+randomB = randomColorNumbers(0, 255);
+
+// Function for appending colors gradient by 1/255.
+
+console.log(randomR, randomG, randomB);
+
+function AddOne(e)
+
+function newRandomPlusOne(e){
+    const newRandom = 0;
+    if (e < 255) {
+    newRandom = e + 1;
+    } else {
+    newRandom= 0;
+    }
+    return newRandom;
  }
 
 
+
+
+// document.body.style.backgroundColor =
+//   "rgb(" + randomR + "," + randomG + "," + randomB + ")";
+//   console.log("rgb(" + randomR + "," + randomG + "," + randomB + ")");
+
+// function runEverySecond() {
+//   newRandomPlusOne(1);
+//   // newRandomPlusOne(randomG);
+//   //newRandomPlusOne(randomB);
+//   //document.body.style.backgroundColor = "rgb(" + randomR + "," + randomG + "," + randomB + ")";
+//   //console.log("rgb(" + randomR + "," + randomG + "," + randomB + ")");   
+//   console.log(newRandomPlusOne(1));
+// }
+
+// setInterval(runEverySecond, 1000);

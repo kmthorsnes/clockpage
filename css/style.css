@@ -1,3 +1,7 @@
-#clock {
-    align-content: center;
+#clock, #quote {
+    text-align: center;
+}
+
+body {
+    background-color: white;
 }

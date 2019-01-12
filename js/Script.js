@@ -69,16 +69,22 @@ randomB = randomColorNumbers(0, 255);
 console.log(randomR, randomG, randomB);
 
 function newRandomPlusOne(e) {
-  let b = e + 1;
-  while (e < b) {
-    e++;
+  if (e !== 255) {
+    let b = e + 1;
+    while (e < b) {
+      e++;
+      return e;
+    }
+  } else {
+    e = 0;
     return e;
   }
 }
 
-console.log(newRandomPlusOne(randomR));
-console.log(newRandomPlusOne(randomG));
-console.log(newRandomPlusOne(randomB));
+
+console.log(newRandomPlusOne(254));
+console.log(newRandomPlusOne(255));
+console.log(newRandomPlusOne(0));
 
 // document.body.style.backgroundColor =
 //   "rgb(" + randomR + "," + randomG + "," + randomB + ")";

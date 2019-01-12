@@ -68,20 +68,17 @@ randomB = randomColorNumbers(0, 255);
 
 console.log(randomR, randomG, randomB);
 
-function AddOne(e)
+function newRandomPlusOne(e) {
+  let b = e + 1;
+  while (e < b) {
+    e++;
+    return e;
+  }
+}
 
-function newRandomPlusOne(e){
-    const newRandom = 0;
-    if (e < 255) {
-    newRandom = e + 1;
-    } else {
-    newRandom= 0;
-    }
-    return newRandom;
- }
-
-
-
+console.log(newRandomPlusOne(randomR));
+console.log(newRandomPlusOne(randomG));
+console.log(newRandomPlusOne(randomB));
 
 // document.body.style.backgroundColor =
 //   "rgb(" + randomR + "," + randomG + "," + randomB + ")";
@@ -92,7 +89,7 @@ function newRandomPlusOne(e){
 //   // newRandomPlusOne(randomG);
 //   //newRandomPlusOne(randomB);
 //   //document.body.style.backgroundColor = "rgb(" + randomR + "," + randomG + "," + randomB + ")";
-//   //console.log("rgb(" + randomR + "," + randomG + "," + randomB + ")");   
+//   //console.log("rgb(" + randomR + "," + randomG + "," + randomB + ")");
 //   console.log(newRandomPlusOne(1));
 // }
 

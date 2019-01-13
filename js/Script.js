@@ -1,3 +1,15 @@
+console.log(`%c ________________________________________
+< Welcome there are probably better ways of achieving this functionality, but hey - it works! >
+< Regards, Karl-Magnus >
+ ----------------------------------------
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||
+                `, "font-family:monospace");
+
+
 // Declaring global variables
 let clock = document.getElementById("clock");
 let date = new Date();
@@ -5,7 +17,7 @@ let hour = date.getHours();
 let minute = date.getMinutes();
 let second = date.getSeconds();
 
-//Sets time 
+//Sets time
 
 function setTime() {
   const date = new Date();
@@ -60,12 +72,12 @@ function RGBFromDate() {
   RGBhour = Math.round(hour);
   RGBminute = Math.round(minute);
   RGBsecond = Math.round(second);
-  colorShade = (0.299 * RGBhour + 0.0587 * RGBminute + 0.114 * RGBsecond) / 256;
-  console.log(colorShade.toFixed(2));
-
+  // Sets background color based on time of day HH:MM:SS
   document.body.style.backgroundColor =
     "rgb(" + RGBhour + "," + RGBminute + "," + RGBsecond + ")";
-
+  // For selecting color font for best readability. 
+  colorShade = (0.299 * RGBhour + 0.0587 * RGBminute + 0.114 * RGBsecond) / 256;
+  
   if (colorShade > 0.7) {
     document.getElementById("clock").style.color = "white";
     document.getElementById("jokeSetup").style.color = "white";
@@ -76,11 +88,14 @@ function RGBFromDate() {
     document.getElementById("jokePunchline").style.color = "black";
   }
 }
+// Loads page with background color
+RGBFromDate();
 
+// Loads it every second
 setInterval(RGBFromDate, 1000);
 
 // Fetching random joke from API
-function showJoke(){
+function showJoke() {
   var apiUrl = "https://official-joke-api.appspot.com/jokes/random";
   fetch(apiUrl)
     .then(response => {
@@ -94,7 +109,9 @@ function showJoke(){
     });
 }
 
+// Looks like it blocked for now. Maybe they let me in later? 
+
 // Loads joke on page load
 showJoke();
-// Loads new joke every 5th second
+// Loads new joke every minute second
 setInterval(showJoke, 60000);

@@ -1,6 +1,5 @@
 // Declaring global variables
 const clock = document.getElementById("clock");
-const background = document.body.style.backgroundColor;
 
 //Setter klokkeslett
 
@@ -106,7 +105,6 @@ function newRandomG() {
     } else {
       randomG = 0;
     }
-    console.log(randomG);
   }
 
   function newRandomB() {
@@ -115,10 +113,9 @@ function newRandomG() {
     } else {
       randomB = 0;
     }
-    console.log(randomB);
   }
 
-  function changeBackground2(){
+  function backgroundChange(){
     document.body.style.backgroundColor =
     "rgb(" + randomR + "," + randomG + "," + randomB + ")";
   };
@@ -127,27 +124,9 @@ function changeBackground(){
     newRandomR();
     newRandomG();
     newRandomB();
-    changeBackground2();
+    backgroundChange();
+    console.log(randomR, randomB, randomG);
 }
 
 setInterval(changeBackground, 1000);
-
-
-// console.log(newRandomPlusOne(randomR));
-// console.log(newRandomPlusOne(randomG));
-// console.log(newRandomPlusOne(randomB));
-
-// document.body.style.backgroundColor =
-//   "rgb(" + randomR + "," + randomG + "," + randomB + ")";
-//   console.log("rgb(" + randomR + "," + randomG + "," + randomB + ")");
-
-// function runEverySecond() {
-//   newRandomPlusOne(1);
-//   // newRandomPlusOne(randomG);
-//   //newRandomPlusOne(randomB);
-//   //document.body.style.backgroundColor = "rgb(" + randomR + "," + randomG + "," + randomB + ")";
-//   //console.log("rgb(" + randomR + "," + randomG + "," + randomB + ")");
-//   console.log(newRandomPlusOne(1));
-// }
-
 

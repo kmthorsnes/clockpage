@@ -1,5 +1,6 @@
-#clock, #quote {
+#clock, #joke {
     text-align: center;
+    font-family: 'Karla', sans-serif;
 }
 
 body {
@@ -9,4 +10,5 @@ body {
 
 #clock {
     font-size: 100px;
+    text-shadow: 4px 4px 4px #aaa;
 }

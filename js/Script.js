@@ -7,10 +7,10 @@ let second = date.getSeconds();
 //Setter klokkeslett
 
 function setTime() {
-    const date = new Date();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
+  const date = new Date();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
 
   function hourWithLeadingZero() {
     if (hour < 10) {
@@ -50,27 +50,47 @@ setTime();
 //Set clock to update every second
 setInterval(setTime, 1000);
 
-
 // New take on colorGradient-change codebase from: https://hugogiraudel.com/2015/01/12/color-clock-experiment/
 
 function RGBFromDate() {
     const date = new Date();
-    hour =  date.getHours() / 24 * 255;
-    minute =  date.getMinutes() / 60 * 255;
-    second =  date.getSeconds() / 60 * 255;
-    RGBhour = Math.round(hour);
-    RGBminute = Math.round(minute);
-    RGBsecond = Math.round(second);
-    console.log(RGBhour, RGBminute, RGBsecond);
-    document.body.style.backgroundColor =
-    "rgb(" + RGBhour + "," + RGBminute + "," + RGBsecond + ")"
+  hour = (date.getHours() / 24) * 255;
+  minute = (date.getMinutes() / 60) * 255;
+  second = (date.getSeconds() / 60) * 255;
+  RGBhour = Math.round(hour);
+  RGBminute = Math.round(minute);
+  RGBsecond = Math.round(second);
+  colorShade = (0.299 * RGBhour + .0587 * RGBminute + 0.114 * RGBsecond)
+  console.log(colorShade);
+  
+  document.body.style.backgroundColor =
+    "rgb(" + RGBhour + "," + RGBminute + "," + RGBsecond + ")";
+
+    if (colorShade > 0.7 ) {
+      document.getElementById("clock").style.color = "white";
+      document.getElementById("joke").style.color = "white";
+    } else {
+    document.getElementById("clock").style.color = "black";
+    document.getElementById("joke").style.color = "black";
+
+    }
 }
-    
+  
+
+
+
+
+//   function setFontColor(RGBhour, RGBminute, RGBsecond) {
+//     return colorShade(RGBhour, RGBminute, RGBsecond) > 0.7 ? "black" : "white";
+//   }
+
+//   setFontColor(RGBhour, RGBminute, RGBsecond);
+//   { document.getElementById("clock").setFontColor = colorShade;
+// }
+  
+
+
 setInterval(RGBFromDate, 100);
-
-
-
-
 
 // // Adjusting style
 

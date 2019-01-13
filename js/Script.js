@@ -4,7 +4,8 @@ let date = new Date();
 let hour = date.getHours();
 let minute = date.getMinutes();
 let second = date.getSeconds();
-//Setter klokkeslett
+
+//Sets time 
 
 function setTime() {
   const date = new Date();
@@ -51,125 +52,49 @@ setTime();
 setInterval(setTime, 1000);
 
 // New take on colorGradient-change codebase from: https://hugogiraudel.com/2015/01/12/color-clock-experiment/
-
 function RGBFromDate() {
-    const date = new Date();
+  const date = new Date();
   hour = (date.getHours() / 24) * 255;
   minute = (date.getMinutes() / 60) * 255;
   second = (date.getSeconds() / 60) * 255;
   RGBhour = Math.round(hour);
   RGBminute = Math.round(minute);
   RGBsecond = Math.round(second);
-  colorShade = (0.299 * RGBhour + .0587 * RGBminute + 0.114 * RGBsecond)
-  console.log(colorShade);
-  
+  colorShade = (0.299 * RGBhour + 0.0587 * RGBminute + 0.114 * RGBsecond) / 256;
+  console.log(colorShade.toFixed(2));
+
   document.body.style.backgroundColor =
     "rgb(" + RGBhour + "," + RGBminute + "," + RGBsecond + ")";
 
-    if (colorShade > 0.7 ) {
-      document.getElementById("clock").style.color = "white";
-      document.getElementById("joke").style.color = "white";
-    } else {
+  if (colorShade > 0.7) {
+    document.getElementById("clock").style.color = "white";
+    document.getElementById("jokeSetup").style.color = "white";
+    document.getElementById("jokePunchline").style.color = "white";
+  } else {
     document.getElementById("clock").style.color = "black";
-    document.getElementById("joke").style.color = "black";
-
-    }
+    document.getElementById("jokeSetup").style.color = "black";
+    document.getElementById("jokePunchline").style.color = "black";
+  }
 }
-  
 
+setInterval(RGBFromDate, 1000);
 
+// Fetching random joke from API
+function showJoke(){
+  var apiUrl = "https://official-joke-api.appspot.com/jokes/random";
+  fetch(apiUrl)
+    .then(response => {
+      return response.json();
+    })
+    .then(response => {
+      console.log(response.setup);
+      console.log(response.punchline);
+      document.getElementById("jokeSetup").textContent = response.setup;
+      document.getElementById("jokePunchline").textContent = response.punchline;
+    });
+}
 
-
-//   function setFontColor(RGBhour, RGBminute, RGBsecond) {
-//     return colorShade(RGBhour, RGBminute, RGBsecond) > 0.7 ? "black" : "white";
-//   }
-
-//   setFontColor(RGBhour, RGBminute, RGBsecond);
-//   { document.getElementById("clock").setFontColor = colorShade;
-// }
-  
-
-
-setInterval(RGBFromDate, 100);
-
-// // Adjusting style
-
-// // Changing background constructor(props)
-// function randomColorNumbers(min, max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-
-// // Creates random RGB-color starting point
-
-// randomR = randomColorNumbers(0, 255);
-// randomG = randomColorNumbers(0, 255);
-// randomB = randomColorNumbers(0, 255);
-
-// function changeBackgroundforreal() {
-//   // Initial functions creating of random numbers from 0-255 for color scale
-
-//   // Function for appending colors gradient by 1/255.
-
-//   console.log(randomR, randomG, randomB);
-
-//   function newRandomPlusOne(e) {
-//     if (e !== 255) {
-//       let b = e + 1;
-//       while (e < b) {
-//         e++;
-//         return e;
-//       }
-//     } else {
-//       e = 0;
-//       return e;
-//     }
-//   }
-
-//   console.log(newRandomPlusOne(randomR));
-// }
-
-// var i = 12;
-// function increment() {
-//   i++;
-//   document.getElementById("number").innerHTML = i;
-// }
-
-// function newRandomR() {
-//   if (randomR !== 255) {
-//     randomR++;
-//   } else {
-//     randomR = 0;
-//   }
-// }
-// function newRandomG() {
-//   if (randomG !== 255) {
-//     randomG++;
-//   } else {
-//     randomG = 0;
-//   }
-// }
-
-// function newRandomB() {
-//   if (randomB !== 255) {
-//     randomB++;
-//   } else {
-//     randomB = 0;
-//   }
-// }
-
-// function backgroundChange() {
-//   document.body.style.backgroundColor =
-//     "rgb(" + randomR + "," + randomG + "," + randomB + ")";
-// }
-
-// function changeBackground() {
-//   newRandomR();
-//   newRandomG();
-//   newRandomB();
-//   backgroundChange();
-//   console.log(randomR, randomB, randomG);
-// }
-
-// setInterval(changeBackground, 1000);
+// Loads joke on page load
+showJoke();
+// Loads new joke every 5th second
+setInterval(showJoke, 60000);

@@ -1,5 +1,6 @@
 // Declaring global variables
 const clock = document.getElementById("clock");
+const background = document.body.style.backgroundColor;
 
 //Setter klokkeslett
 
@@ -50,8 +51,6 @@ setInterval(setTime, 1000);
 // Adjusting style
 
 // Changing background constructor(props)
-
-// Initial functions creating of random numbers from 0-255 for color scale
 function randomColorNumbers(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -64,27 +63,79 @@ randomR = randomColorNumbers(0, 255);
 randomG = randomColorNumbers(0, 255);
 randomB = randomColorNumbers(0, 255);
 
-// Function for appending colors gradient by 1/255.
+function changeBackgroundforreal() {
+  // Initial functions creating of random numbers from 0-255 for color scale
 
-console.log(randomR, randomG, randomB);
+  // Function for appending colors gradient by 1/255.
 
-function newRandomPlusOne(e) {
-  if (e !== 255) {
-    let b = e + 1;
-    while (e < b) {
-      e++;
+  console.log(randomR, randomG, randomB);
+
+  function newRandomPlusOne(e) {
+    if (e !== 255) {
+      let b = e + 1;
+      while (e < b) {
+        e++;
+        return e;
+      }
+    } else {
+      e = 0;
       return e;
     }
-  } else {
-    e = 0;
-    return e;
   }
+
+  console.log(newRandomPlusOne(randomR));
 }
 
+var i = 12;
+function increment() {
+  i++;
+  document.getElementById("number").innerHTML = i;
+}
 
-console.log(newRandomPlusOne(254));
-console.log(newRandomPlusOne(255));
-console.log(newRandomPlusOne(0));
+function newRandomR() {
+  if (randomR !== 255) {
+    randomR++;
+  } else {
+    randomR = 0;
+  }
+
+}
+function newRandomG() {
+    if (randomG !== 255) {
+      randomG++;
+    } else {
+      randomG = 0;
+    }
+    console.log(randomG);
+  }
+
+  function newRandomB() {
+    if (randomB !== 255) {
+      randomB++;
+    } else {
+      randomB = 0;
+    }
+    console.log(randomB);
+  }
+
+  function changeBackground2(){
+    document.body.style.backgroundColor =
+    "rgb(" + randomR + "," + randomG + "," + randomB + ")";
+  };
+
+function changeBackground(){
+    newRandomR();
+    newRandomG();
+    newRandomB();
+    changeBackground2();
+}
+
+setInterval(changeBackground, 1000);
+
+
+// console.log(newRandomPlusOne(randomR));
+// console.log(newRandomPlusOne(randomG));
+// console.log(newRandomPlusOne(randomB));
 
 // document.body.style.backgroundColor =
 //   "rgb(" + randomR + "," + randomG + "," + randomB + ")";
@@ -99,4 +150,4 @@ console.log(newRandomPlusOne(0));
 //   console.log(newRandomPlusOne(1));
 // }
 
-// setInterval(runEverySecond, 1000);
+

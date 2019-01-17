@@ -118,13 +118,13 @@ showJoke();
 setInterval(showJoke, 60000);
 
 var request = new XMLHttpRequest();
-request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&APPID=d806811d3091a2c349bd39e4e9d4847b&', true);
+request.open('GET', 'https://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&APPID=d806811d3091a2c349bd39e4e9d4847b&', true);
 
 request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     console.log("OpenWeather connected successfully")
     let data = JSON.parse(request.responseText);
-    let icon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    let icon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
     let temp = Math.floor(data.main.temp);
     const weatherName = data.weather[0].main;
     console.log(weatherName);

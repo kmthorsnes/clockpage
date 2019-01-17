@@ -1,4 +1,4 @@
-#clock, #jokeSetup, #jokePunchline  {
+#clock, #jokeSetup, #jokePunchline   {
     text-align: center;
     font-family: 'Karla', sans-serif;
 }
@@ -18,3 +18,24 @@ body {
     font-size: 50px;
     text-shadow: 4px 4px 4px #aaa;
 }
+
+
+#weathercontainer {
+    font-family: 'Karla', sans-serif;
+    font-size: 25px;
+}
+
+#weatherdiv {
+    float: left;
+}
+
+#tempdiv {
+    float: right;
+}
+
+
+
+
+
+
+

@@ -10,6 +10,7 @@ console.log(`%c ________________________________________
                 `, "font-family:monospace");
 
 
+
 // Declaring global variables
 let clock = document.getElementById("clock");
 let date = new Date();
@@ -115,3 +116,28 @@ function showJoke() {
 showJoke();
 // Loads new joke every minute second
 setInterval(showJoke, 60000);
+
+var request = new XMLHttpRequest();
+request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&APPID=d806811d3091a2c349bd39e4e9d4847b&', true);
+
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    console.log("OpenWeather connected successfully")
+    let data = JSON.parse(request.responseText);
+    let icon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    let temp = Math.floor(data.main.temp);
+    const weatherName = data.weather[0].main;
+    console.log(weatherName);
+    document.getElementById('icon').setAttribute('src', icon);
+    document.getElementById('tempapi').append(temp);
+    document.getElementById('weatherapi').textContent = weatherName;
+
+  } else {
+    console.log("We reached our target server, but it returned an error");
+  }
+};
+request.onerror = function() {
+  console.log("There was a connection error of some sort") 
+};
+
+request.send();

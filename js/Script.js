@@ -79,14 +79,16 @@ function RGBFromDate() {
   // For selecting color font for best readability. 
   colorShade = (0.299 * RGBhour + 0.0587 * RGBminute + 0.114 * RGBsecond) / 256;
   
-  if (colorShade > 0.7) {
+  if (colorShade < 0.7) {
     document.getElementById("clock").style.color = "white";
     document.getElementById("jokeSetup").style.color = "white";
     document.getElementById("jokePunchline").style.color = "white";
+    document.getElementById("weathercontainer").style.color = "white";
   } else {
     document.getElementById("clock").style.color = "black";
     document.getElementById("jokeSetup").style.color = "black";
     document.getElementById("jokePunchline").style.color = "black";
+    document.getElementById("weathercontainer").style.color = "black";
   }
 }
 // Loads page with background color

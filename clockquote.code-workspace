@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "js"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"cSpell.words": [
+			"klokkeslett"
+		]
+	}
+}
